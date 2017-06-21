@@ -2,8 +2,8 @@
 
 <h1>Users</h1>
 
-<table>
-  <thead>
+<table class="table table-striped table-bordered">
+  <thead class="table-header">
     <tr>
       <th>First name</th>
       <th>Last name</th>
@@ -12,7 +12,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="">
     <% @users.each do |user| %>
       <tr>
         <td><%= user.first_name %></td>
@@ -27,5 +27,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>

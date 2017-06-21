@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @game.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @game.description %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @game.image_url %>
+</p>
+
+<% purchased = current_user.purchases.where(game: @game).first %>
+<% if purchased %>
+  <button class="btn-purchase btn btn-success" data-purchase-id="<%= purchased.id %>" data-game-id="<%= @game.id %>">
+    <span class="glyphicon glyphicon-tag"></span>
+  </button>
+<% else %>
+  <button class="btn-purchase btn btn-primary" data-game-id="<%= @game.id %>">
+    <span class="glyphicon glyphicon-tag"></span>
+  </button>
+<% end %>
+
+<% if current_user.is_staff %>
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<% end %>
+<%= link_to 'Back', games_path %>
